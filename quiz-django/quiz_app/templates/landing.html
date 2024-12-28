@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<center><h1>Welcome to the Quiz App!</h1></center>
+<center><button onclick="showPopup()">Start Quiz</button></center>
+
+<center><div id="popup" style="display:none;">
+    <p>Terms and Conditions</p>
+    <input type="checkbox" id="agree"> I agree
+    <button id="startQuiz" disabled onclick="startQuiz()">Let's Start</button>
+</div></center>
+
+<script>
+    const checkbox = document.getElementById('agree');
+    const startButton = document.getElementById('startQuiz');
+
+    checkbox.addEventListener('change', () => {
+        startButton.disabled = !checkbox.checked;
+    });
+
+    function showPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function startQuiz() {
+        window.location.href = "/quiz/";
+    }
+</script>
+{% endblock %}
+
